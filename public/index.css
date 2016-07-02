@@ -1,0 +1,27 @@
+.logo {
+  padding: 15px 0;
+  font-size: 25px;
+  color: #aaaaaa;
+  font-weight: bold; }
+
+.login-btn {
+  padding: 0;
+  width: 300px; }
+
+.profile-pic {
+  width: 100px;
+  border-radius: 50px; }
+
+.photo-header {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+.project {
+  border-style: solid;
+  padding: 25px;
+  border-color: #dadada;
+  border-radius: 12px;
+  margin-top: 20px; }
+
+body {
+  background: #efefef; }

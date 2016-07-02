@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="text-center photo-header">
+        <img ng-src="{{user.photoURL}}" class="profile-pic">
+    </div>
+    
+    <div class="col-md-8 col-md-offset-2">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstName">FirstName:</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstName" ng-model="user.firstName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastName">LastName:</label>
+                <div class="col-sm-10"> 
+                <input type="text" class="form-control" id="lastName" ng-model="user.lastName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastName">Title/Description:</label>
+                <div class="col-sm-10"> 
+                <input type="text" class="form-control" id="title" ng-model="user.title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="city">City:</label>
+                <div class="col-sm-10"> 
+                <input type="text" class="form-control" id="city" ng-model="user.city">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="country">Country:</label>
+                <div class="col-sm-10"> 
+                <input type="text" class="form-control" id="country" ng-model="user.country">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="phone">Phone:</label>
+                <div class="col-sm-10"> 
+                    <input type="text" class="form-control" id="phone" ng-model="user.phone">
+                </div>
+            </div>
+            
+            <div class="form-group"> 
+                <label class="control-label col-sm-2" for="submit"></label>                
+                <div class="col-sm-10 text-center">
+                    <button class="btn btn-success btn-lg" ng-click="saveProfile()">
+                        Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="col-md-8 col-md-offset-2 project" ng-repeat="(key, project) in projects">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project_title">Project Title:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="project_title" ng-model="project.title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="project_desc">Project Description:</label>
+                    <div class="col-sm-10"> 
+                    <textarea class="form-control" rows="3" id="project_desc" ng-model="project.desc"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="img1">Image 1:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="img1" ng-model="project.img1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="img2">Image 2:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="img2" ng-model="project.img2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="img3">Image 3:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="img3" ng-model="project.img3">
+                    </div>
+                </div>
+                
+                <div class="col-sm-10 text-right">
+                    <button class="btn btn-success" ng-click="saveProject(key)">
+                        Save</button>
+                    <button class="btn btn-danger" ng-click="deleteProject(key)">
+                        Delete</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 col-md-offset-8" style="margin-top: 15px;">
+            <button ng-click="addProject()" class="btn btn-default btn-lg">Add Project</button>
+        </div>
+</div>
