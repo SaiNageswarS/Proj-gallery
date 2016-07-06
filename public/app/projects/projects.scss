@@ -1,0 +1,36 @@
+.project-page {
+    .project-header {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        
+        .name-header {
+            margin-top: 20px;
+
+            h4 {
+                display: inline-block;
+            }
+        }
+    }
+
+    .project-body {
+        .project-detail {
+            padding: 0;
+
+            h4 {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                font-weight: 300;
+                font-size: 25px;
+            }
+
+            .skills {
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
+
+            .proj-desc {
+                margin-top: 15px;
+            }
+        }
+    }
+}

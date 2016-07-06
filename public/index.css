@@ -23,5 +23,31 @@
   border-radius: 12px;
   margin-top: 20px; }
 
-body {
-  background: #efefef; }
+.project-page .project-header {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  .project-page .project-header .name-header {
+    margin-top: 20px; }
+    .project-page .project-header .name-header h4 {
+      display: inline-block; }
+
+.project-page .project-body .project-detail {
+  padding: 0; }
+  .project-page .project-body .project-detail h4 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-weight: 300;
+    font-size: 25px; }
+  .project-page .project-body .project-detail .skills {
+    margin-top: 15px;
+    margin-bottom: 30px; }
+  .project-page .project-body .project-detail .proj-desc {
+    margin-top: 15px; }
+
+.ig-tats-hr .start-hr {
+  background-color: #EFB70A;
+  height: 3px; }
+
+.ig-tats-hr .end-hr {
+  background-color: #dadada;
+  height: 2px; }

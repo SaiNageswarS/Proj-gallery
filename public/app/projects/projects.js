@@ -3,13 +3,13 @@
 angular.module('bookme')
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/profile', {
-    templateUrl: 'app/profile/profile.html',
-    controller: 'profileCtrl'
+  $routeProvider.when('/projects', {
+    templateUrl: 'app/projects/projects.html',
+    controller: 'projectsCtrl'
   });
 }])
 
-.controller('profileCtrl', function($scope, $location, ProfileService) { 
+.controller('projectsCtrl', function($scope, $location, ProfileService) { 
     var currentUser = firebase.auth().currentUser;
     
     if (!currentUser) {
@@ -28,10 +28,6 @@ angular.module('bookme')
             alert("Failed to retrieve data. Check your connectivity");
         });
         
-        $scope.saveProfile = function () {
-            profileInstance.saveProfile($scope.user);
-        };
-        
         $scope.projects = {};
         
         profileInstance.getProjects(function (change, key, project) {
@@ -40,24 +36,18 @@ angular.module('bookme')
                                 break;
                                 
                 case 'added': $scope.projects[key] = project;
+                            if ($scope.selected_project === '') {
+                                $scope.selected_project = key;
+                            }
                             break;
             }  
             try {$scope.$apply(); } catch(err) {}  
         });
         
-        $scope.addProject = function () {
-            profileInstance.addProject();
+        $scope.selected_project = '';
+        $scope.setSelected = function(key) {
+            $scope.selected_project = key;    
         };
-        
-        $scope.saveProject = function(key) {
-            profileInstance.saveProject(key, $scope.projects[key], 
-                function() {
-                    console.log("done");
-                });
-        }
-        
-        $scope.deleteProject = function(key) {
-            profileInstance.deleteProject(key);
-        }
-    } 
+    }
+    
 });

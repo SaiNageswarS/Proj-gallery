@@ -1,0 +1,42 @@
+<div class="container project-page">
+    <div class="row project-header">
+         <div class="col-md-1 project-photo" style="width: 12%;">
+             <img ng-src="{{user.photoURL}}" class="profile-pic">
+         </div>
+         <div class="col-md-5 text-uppercase text-center name-header">
+             <div class="row">
+                 <h4>{{user.firstName + ' ' + user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
+             </div>
+             <div class="row">
+                <img src="img/logos/linkedin.png" width="30px">                 
+                <img src="img/logos/github.png" width="30px">
+             </div>
+         </div>
+         <div class="col-md-5 text-right" style="margin-top: 30px;">
+             <h3><small>{{user.title}} | {{user.company}}</small></h3>
+         </div>
+    </div>
+    <ig-tats-hr></ig-tats-hr>
+
+    <div class="row project-body">
+        <div class="col-md-6">
+            <img ng-src="{{projects[selected_project].img1}}" width="100%">
+        </div>
+        <div class="col-md-6 project-detail">
+            <h4>{{projects[selected_project].title}}</h4>
+            <ig-tats-hr></ig-tats-hr>
+            
+            <div class="skills">
+                <b>Skills : </b> {{projects[selected_project].skills}} <br>
+                <b>Project URL : </b> {{projects[selected_project].url}}
+            </div>
+
+            <ig-tats-hr></ig-tats-hr>
+            <div class="proj-desc">
+                {{projects[selected_project].desc}}
+            </div>
+        </div>
+    </div>
+</div>
+    
+    

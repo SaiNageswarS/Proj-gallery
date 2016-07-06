@@ -3,6 +3,7 @@ angular.module('bookme')
     var profileService = function (userId) {
         var self = this;
         var rootRef = firebase.database();
+        var storageRef = firebase.storage().ref(userId);
         var profileRef = rootRef.ref('profile/' + userId);
         var projectRef = rootRef.ref('project/' + userId);
         
@@ -24,19 +25,58 @@ angular.module('bookme')
             var newProjectRef = projectRef.push();
             newProjectRef.set({
                 title: '',
-                desc: '',
-                img1: '',
-                img2: '',
-                img3: ''
+                desc: ''
             });
         };
         
-        self.saveProject = function (key, project) {
-            projectRef.child(key).set(project, function (error) {
+        var uploadImage = function (path, img, cb) {
+            if (img && img.name) {
+                var imgUploadTask = storageRef.child(path).put(img, {});
+                    
+                imgUploadTask.on('state_changed', null, function(error) {
+                    alert("Failed to save. Check network connection.");
+                }, function() {
+                    var url = imgUploadTask.snapshot.metadata.downloadURLs[0];
+                    cb(url);
+                });   
+            }
+            else {
+                cb(null);
+            }
+        };
+        
+        self.saveProject = function (key, project, cb) {
+            var projectData = {};
+            projectData.title = project.title;
+            projectData.desc = project.desc;
+            
+            projectRef.child(key).set(projectData, function (error) {
                 if (error) {
                     alert("Failed to save. Check network connection.");
                 } else {
-                    alert("Saved succesfully");
+                    alert("Saved succesfully");                    
+                    // initiate image upload
+                    uploadImage(key + "/img1", project.img1, function(url) {
+                        if (url) {
+                            projectData.img1 = url;
+                            projectRef.child(key).set(projectData);
+                            console.log('File available at', url);
+                        }
+                    });
+                    uploadImage(key + "/img2", project.img2, function(url) {
+                        if (url) {
+                            projectData.img2 = url;
+                            projectRef.child(key).set(projectData);
+                            console.log('File available at', url);
+                        }
+                    });
+                    uploadImage(key + "/img3", project.img3, function(url) {
+                        if (url) {
+                            projectData.img3 = url;
+                            projectRef.child(key).set(projectData);
+                            console.log('File available at', url);
+                        }
+                    });
                 }
             });
         };
