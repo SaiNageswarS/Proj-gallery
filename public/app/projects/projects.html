@@ -37,6 +37,15 @@
             </div>
         </div>
     </div>
+
+    <div class="row other-projects">
+        <h4 style="background-color: #FFBE00; padding: 10px; max-width: 120px;">Projects</h4>
+        <span ng-repeat="(key, project) in profileInstance.projects" style="margin: 15px;">
+            <a href="#" ng-click="setSelected(key)">
+                <img ng-src="{{project.img1}}" width="200px">
+                </a>
+        </span>
+    </div>
 </div>
     
     
