@@ -1,5 +1,10 @@
 angular.module('bookme')
 .factory('ProfileService', function($q) {
+    function getFirstKey(obj) {
+        for (var a in obj) return a;
+        return null;
+    }
+
     var profileService = function (userId) {
         var self = this;
         var rootRef = firebase.database();
@@ -7,6 +12,7 @@ angular.module('bookme')
         var profileRef = rootRef.ref('profile/' + userId);
         var projectRef = rootRef.ref('project/' + userId);
         
+        self.refreshUI = null;
         self.saveProfile = function (profile) {
             profileRef.set(profile, function (error) {
                 if (error) {
@@ -83,26 +89,62 @@ angular.module('bookme')
         };
         
         self.deleteProject = function (key) {
-            projectRef.child(key).remove();
+            projectRef.child(key).remove(function(error) {
+                if (error) {
+                    alert('Error in network');
+                } else {
+                    alert('Deleted succesfully');
+                }
+            });
         };
+
+        self.projects = {};
+        self.selectedProject = null;
         
-        self.getProjects = function (cb) {
+        var getProjects = function () {
             projectRef.on("child_added", function (snapshot) {
                var project = snapshot.val();
                var key = snapshot.key;
-               cb('added', key, project); 
+               self.projects[key] = project;
+
+               if (self.selectedProject === null) {
+                   self.selectedProject = key;
+               }
+               if (self.refreshUI !== null) self.refreshUI();
             });
             projectRef.on("child_removed", function (oldSnapshot) {
                 var key = oldSnapshot.key;
-                cb('removed', key, null);
+                delete self.projects[key];
+                if(key === self.selectedProject) {
+                    self.selectedProject = getFirstKey(self.projects);
+                }
+                if (self.refreshUI !== null) self.refreshUI();
             });
             projectRef.on("child_changed", function (childSnapshot, prevChildKey) {
                 var key = childSnapshot.key;
                 var project = childSnapshot.val();
-                cb('added', key, project);
+                self.projects[key] = project;
+                if (self.refreshUI !== null) self.refreshUI();
             });
         };
+        getProjects();
     };
     
-    return profileService;
+    var profileInstance = null;
+    return {
+        getInstance: function (refreshUICB) {
+            if(profileInstance === null) {
+                var currentUser = firebase.auth().currentUser;
+                if (!currentUser) {
+                    return null;
+                }
+                profileInstance = new profileService(currentUser.uid);
+            }
+            profileInstance.refreshUI = refreshUICB;
+            return profileInstance;
+        },
+        destroyInstance: function () {
+            profileInstance = null;
+        }
+    };
 });

@@ -15,38 +15,24 @@ angular.module('bookme')
     if (!currentUser) {
         $location.path("/login");
     } else {
-        var profileInstance = new ProfileService(currentUser.uid);
+        var refreshUI = function() {
+            try { $scope.$apply() } catch(err) {}
+        };  
+        $scope.profileInstance = ProfileService.getInstance(refreshUI);
         $scope.user = {
             photoURL: currentUser.photoURL,
             firstName: currentUser.displayName
         };
         
-        profileInstance.getProfile(function (snapshot) {
+        $scope.profileInstance.getProfile(function (snapshot) {
             $scope.user = snapshot.val();
             try {$scope.$apply(); } catch(err) {}  
         }, function (err) {
             alert("Failed to retrieve data. Check your connectivity");
         });
         
-        $scope.projects = {};
-        
-        profileInstance.getProjects(function (change, key, project) {
-            switch(change) {
-                case 'removed': delete $scope.projects[key];
-                                break;
-                                
-                case 'added': $scope.projects[key] = project;
-                            if ($scope.selected_project === '') {
-                                $scope.selected_project = key;
-                            }
-                            break;
-            }  
-            try {$scope.$apply(); } catch(err) {}  
-        });
-        
-        $scope.selected_project = '';
         $scope.setSelected = function(key) {
-            $scope.selected_project = key;    
+            $scope.profileInstance.selectedProject = key;    
         };
     }
     

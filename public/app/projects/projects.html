@@ -20,20 +20,20 @@
 
     <div class="row project-body">
         <div class="col-md-6">
-            <img ng-src="{{projects[selected_project].img1}}" width="100%">
+            <img ng-src="{{profileInstance.projects[profileInstance.selectedProject].img1}}" width="100%">
         </div>
         <div class="col-md-6 project-detail">
-            <h4>{{projects[selected_project].title}}</h4>
+            <h4>{{profileInstance.projects[profileInstance.selectedProject].title}}</h4>
             <ig-tats-hr></ig-tats-hr>
             
             <div class="skills">
-                <b>Skills : </b> {{projects[selected_project].skills}} <br>
-                <b>Project URL : </b> {{projects[selected_project].url}}
+                <b>Skills : </b> {{profileInstance.projects[profileInstance.selectedProject].skills}} <br>
+                <b>Project URL : </b> {{profileInstance.projects[profileInstance.selectedProject].url}}
             </div>
 
             <ig-tats-hr></ig-tats-hr>
             <div class="proj-desc">
-                {{projects[selected_project].desc}}
+                {{profileInstance.projects[profileInstance.selectedProject].desc}}
             </div>
         </div>
     </div>

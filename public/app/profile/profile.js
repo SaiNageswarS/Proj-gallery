@@ -15,13 +15,17 @@ angular.module('bookme')
     if (!currentUser) {
         $location.path("/login");
     } else {
-        var profileInstance = new ProfileService(currentUser.uid);
+        var refreshUI = function() {
+            try { $scope.$apply() } catch(err) {}
+        };  
+
+        $scope.profileInstance = ProfileService.getInstance(refreshUI);
         $scope.user = {
             photoURL: currentUser.photoURL,
             firstName: currentUser.displayName
         };
         
-        profileInstance.getProfile(function (snapshot) {
+        $scope.profileInstance.getProfile(function (snapshot) {
             $scope.user = snapshot.val();
             try {$scope.$apply(); } catch(err) {}  
         }, function (err) {
@@ -29,35 +33,22 @@ angular.module('bookme')
         });
         
         $scope.saveProfile = function () {
-            profileInstance.saveProfile($scope.user);
+            $scope.profileInstance.saveProfile($scope.user);
         };
         
-        $scope.projects = {};
-        
-        profileInstance.getProjects(function (change, key, project) {
-            switch(change) {
-                case 'removed': delete $scope.projects[key];
-                                break;
-                                
-                case 'added': $scope.projects[key] = project;
-                            break;
-            }  
-            try {$scope.$apply(); } catch(err) {}  
-        });
-        
         $scope.addProject = function () {
-            profileInstance.addProject();
+            $scope.profileInstance.addProject();
         };
         
         $scope.saveProject = function(key) {
-            profileInstance.saveProject(key, $scope.projects[key], 
+            $scope.profileInstance.saveProject(key, $scope.profileInstance.projects[key], 
                 function() {
                     console.log("done");
                 });
         }
         
         $scope.deleteProject = function(key) {
-            profileInstance.deleteProject(key);
+            $scope.profileInstance.deleteProject(key);
         }
     } 
 });
