@@ -18,6 +18,10 @@
   .profile-page .basic-info .right-col {
     border-left: solid 1px #dadada; }
 
+.profile-page .social-info {
+  padding-top: 25px;
+  border: solid 3px #dadada; }
+
 .project-page .project-header {
   margin-top: 20px;
   margin-bottom: 20px; }
