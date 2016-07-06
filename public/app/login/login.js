@@ -12,7 +12,7 @@ angular.module('bookme')
 .controller('loginCtrl', function($scope, UserService, $location) { 
     firebase.auth().onAuthStateChanged(function(currentUser) {
         if (currentUser) {
-            $location.path("/projects");
+            $location.path("/profile");
             $scope.$apply();
         }
     });
@@ -20,7 +20,7 @@ angular.module('bookme')
     $scope.google_login = function() {
         UserService.login_google()
             .then(function (user) {
-                $location.path("/projects")
+                $location.path("/profile")
             });
     };
 });

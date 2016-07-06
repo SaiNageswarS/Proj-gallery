@@ -1,17 +1,18 @@
-.profile-pic {
-    width: 100px;
-    border-radius: 50px;
-}
+.profile-page {
+    .basic-info {
+        padding: 10px;
+        border: solid 3px #dadada;
 
-.photo-header {
-    margin-top: 50px;
-    margin-bottom: 50px; 
-}
+        h3 {
+            font-size: 18px;
+        }
 
-.project {
-    border-style: solid;
-    padding: 25px;
-    border-color: #dadada;
-    border-radius: 12px;
-    margin-top: 20px;
+        .left-col {
+            padding-top: 30px;
+        }
+
+        .right-col {
+            border-left: solid 1px #dadada;
+        }
+    }
 }

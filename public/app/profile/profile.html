@@ -1,55 +1,62 @@
-<div class="container">
-    <div class="text-center photo-header">
-        <img ng-src="{{user.photoURL}}" class="profile-pic">
-    </div>
-    
-    <div class="col-md-8 col-md-offset-2">
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="firstName">FirstName:</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="firstName" ng-model="user.firstName">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="lastName">LastName:</label>
-                <div class="col-sm-10"> 
-                <input type="text" class="form-control" id="lastName" ng-model="user.lastName">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="lastName">Title/Description:</label>
-                <div class="col-sm-10"> 
-                <input type="text" class="form-control" id="title" ng-model="user.title">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="city">City:</label>
-                <div class="col-sm-10"> 
-                <input type="text" class="form-control" id="city" ng-model="user.city">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="country">Country:</label>
-                <div class="col-sm-10"> 
-                <input type="text" class="form-control" id="country" ng-model="user.country">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="phone">Phone:</label>
-                <div class="col-sm-10"> 
-                    <input type="text" class="form-control" id="phone" ng-model="user.phone">
-                </div>
-            </div>
-            
-            <div class="form-group"> 
-                <label class="control-label col-sm-2" for="submit"></label>                
-                <div class="col-sm-10 text-center">
-                    <button class="btn btn-success btn-lg" ng-click="saveProfile()">
+<div class="container profile-page">
+    <div class="row basic-info">
+        <h3>BASIC INFORMATION</h3>
+        <div class="col-md-2 left-col text-center">
+            <img class="profile-photo" 
+                 ng-src="{{user.photoURL}}" 
+                 width="70px"
+                 style="display: block;
+                        margin-left: 25%"><br>
+            <a href="#"><img src="img/upload.jpg"> Upload </a>
+            <br><br><br>
+            <button class="btn btn-success btn-lg" ng-click="saveProfile()">
                         Save</button>
+        </div>
+
+        <div class="col-md-9 right-col">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label>FirstName:</label>
+                        <input type="text" class="form-control" id="firstName" ng-model="user.firstName">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>LastName:</label>
+                        <input type="text" class="form-control" id="lastName" ng-model="user.lastName">
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" class="form-control" id="title" ng-model="user.title">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Company:</label>
+                        <input type="text" class="form-control" id="title" ng-model="user.company">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Location:</label>
+                        <input type="text" class="form-control" id="title" ng-model="user.country">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Website URL:</label>
+                        <input type="text" class="form-control" id="title" ng-model="user.url">
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
     
     <div class="col-md-8 col-md-offset-2 project" ng-repeat="(key, project) in projects">

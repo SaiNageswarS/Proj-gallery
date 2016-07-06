@@ -8,20 +8,15 @@
   padding: 0;
   width: 300px; }
 
-.profile-pic {
-  width: 100px;
-  border-radius: 50px; }
-
-.photo-header {
-  margin-top: 50px;
-  margin-bottom: 50px; }
-
-.project {
-  border-style: solid;
-  padding: 25px;
-  border-color: #dadada;
-  border-radius: 12px;
-  margin-top: 20px; }
+.profile-page .basic-info {
+  padding: 10px;
+  border: solid 3px #dadada; }
+  .profile-page .basic-info h3 {
+    font-size: 18px; }
+  .profile-page .basic-info .left-col {
+    padding-top: 30px; }
+  .profile-page .basic-info .right-col {
+    border-left: solid 1px #dadada; }
 
 .project-page .project-header {
   margin-top: 20px;
