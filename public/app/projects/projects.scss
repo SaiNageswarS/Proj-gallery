@@ -3,9 +3,13 @@
         margin-top: 20px;
         margin-bottom: 20px;
         
-        .name-header {
-            margin-top: 20px;
+        .profile-pic {
+            border-radius: 50%;
+        }
 
+        .name-header {
+            padding-top: 20px;
+            padding-left: 35px;
             h4 {
                 display: inline-block;
             }
@@ -30,6 +34,26 @@
 
             .proj-desc {
                 margin-top: 15px;
+            }
+        }
+    }
+
+    .other-projects {
+        .other-prj-title {
+            background-color: #FFBE00;
+            width: 90px;
+            height: 30px;
+            vertical-align: middle;
+            display: table-cell;
+            font-weight: 500;
+        }
+
+        .project-gallery {
+            display: table-row;
+
+            .gallery-item {
+                display: table-cell;
+                width: 80px;
             }
         }
     }

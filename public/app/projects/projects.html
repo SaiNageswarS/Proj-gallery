@@ -1,15 +1,19 @@
 <div class="container project-page">
     <div class="row project-header">
-         <div class="col-md-1 project-photo" style="width: 12%;">
+         <div class="col-md-1">
              <img ng-src="{{user.photoURL}}" class="profile-pic">
          </div>
-         <div class="col-md-5 text-uppercase text-center name-header">
-             <div class="row">
-                 <h4>{{user.firstName + ' ' + user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
+         <div class="col-md-5 text-uppercase name-header">
+             <div style="display: table-row">
+                <h4>{{user.firstName + ' ' + user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
              </div>
-             <div class="row">
-                <img src="img/logos/linkedin.png" width="30px">                 
-                <img src="img/logos/github.png" width="30px">
+             <div style="display: table-row" class="text-center">
+                <a ng-href="{{user.linkedin}}">
+                    <img src="img/logos/linkedin.png" width="30px">   
+                </a>    
+                <a ng-href="{{user.github}}">          
+                    <img src="img/logos/github.png" width="30px">
+                </a>
              </div>
          </div>
          <div class="col-md-5 text-right" style="margin-top: 30px;">
@@ -39,12 +43,28 @@
     </div>
 
     <div class="row other-projects">
-        <h4 style="background-color: #FFBE00; padding: 10px; max-width: 120px;">Projects</h4>
-        <span ng-repeat="(key, project) in profileInstance.projects" style="margin: 15px;">
-            <a href="#" ng-click="setSelected(key)">
-                <img ng-src="{{project.img1}}" width="200px">
-                </a>
-        </span>
+        <div style="display: table-row">
+            <div class="other-prj-title text-center">Projects</div>
+            <div style="display: table-cell; width: 90%">
+                <hr style="border-top: 3px solid #eee">
+                </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="(key, project) in profileInstance.projects"
+                 class="col-md-2 text-center" style="min-height: 200px; min-width: 250px;">
+                    <a href="#" ng-click="setSelected(key)">
+                        <img ng-src="{{project.img1}}" height="200px">
+                    </a>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="(key, project) in profileInstance.projects"
+                 class="col-md-2 text-center" style="min-width: 250px;">
+                    <a href="#" ng-click="setSelected(key)">
+                        {{project.title}}
+                    </a>
+            </div>
+        </div>
     </div>
 </div>
     

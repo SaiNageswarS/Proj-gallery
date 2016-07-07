@@ -30,8 +30,11 @@
 .project-page .project-header {
   margin-top: 20px;
   margin-bottom: 20px; }
+  .project-page .project-header .profile-pic {
+    border-radius: 50%; }
   .project-page .project-header .name-header {
-    margin-top: 20px; }
+    padding-top: 20px;
+    padding-left: 35px; }
     .project-page .project-header .name-header h4 {
       display: inline-block; }
 
@@ -47,6 +50,20 @@
     margin-bottom: 30px; }
   .project-page .project-body .project-detail .proj-desc {
     margin-top: 15px; }
+
+.project-page .other-projects .other-prj-title {
+  background-color: #FFBE00;
+  width: 90px;
+  height: 30px;
+  vertical-align: middle;
+  display: table-cell;
+  font-weight: 500; }
+
+.project-page .other-projects .project-gallery {
+  display: table-row; }
+  .project-page .other-projects .project-gallery .gallery-item {
+    display: table-cell;
+    width: 80px; }
 
 .ig-tats-hr .start-hr {
   background-color: #EFB70A;
