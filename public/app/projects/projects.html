@@ -1,7 +1,7 @@
 <div class="container project-page">
     <div class="row project-header">
          <div class="col-md-1">
-             <img ng-src="{{user.photoURL}}" class="profile-pic">
+             <img ng-src="{{user.photoURL || defaultProfile}}" class="profile-pic">
          </div>
          <div class="col-md-5 text-uppercase name-header">
              <div style="display: table-row">
@@ -17,7 +17,8 @@
              </div>
          </div>
          <div class="col-md-5 text-right" style="margin-top: 30px;">
-             <h3><small>{{user.title}} | {{user.company}}</small></h3>
+             <a href="#" ng-click="logout()">Logout</a>
+             <h3 style="margin-top: 0"><small>{{user.title}} | {{user.company}}</small></h3>
          </div>
     </div>
     <ig-tats-hr></ig-tats-hr>

@@ -20,6 +20,10 @@ angular.module('bookme')
             });          
             
             return deferred.promise;
+        },
+
+        logout: function () {
+            return firebase.auth().signOut();
         }
     };
 });

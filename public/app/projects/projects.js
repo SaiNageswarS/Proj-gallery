@@ -9,8 +9,9 @@ angular.module('bookme')
   });
 }])
 
-.controller('projectsCtrl', function($scope, $location, ProfileService) { 
+.controller('projectsCtrl', function($scope, $location, ProfileService, UserService) { 
     var currentUser = firebase.auth().currentUser;
+    $scope.defaultProfile = '/img/blank-profile.jpg';
     
     if (!currentUser) {
         $location.path("/login");
@@ -33,6 +34,13 @@ angular.module('bookme')
         
         $scope.setSelected = function(key) {
             $scope.profileInstance.selectedProject = key;    
+        };
+
+        $scope.logout = function() {
+            ProfileService.destroyInstance();
+            UserService.logout().then(function() {
+                $location.path("/login");
+            });
         };
     }
     

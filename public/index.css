@@ -31,7 +31,8 @@
   margin-top: 20px;
   margin-bottom: 20px; }
   .project-page .project-header .profile-pic {
-    border-radius: 50%; }
+    border-radius: 50%;
+    max-width: 100px; }
   .project-page .project-header .name-header {
     padding-top: 20px;
     padding-left: 35px; }

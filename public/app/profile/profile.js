@@ -11,6 +11,7 @@ angular.module('bookme')
 
 .controller('profileCtrl', function($scope, $location, ProfileService) { 
     var currentUser = firebase.auth().currentUser;
+    $scope.defaultProfile = '/img/blank-profile.jpg';
     
     if (!currentUser) {
         $location.path("/login");

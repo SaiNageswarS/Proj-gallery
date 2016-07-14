@@ -3,7 +3,7 @@
         <h3>BASIC INFORMATION</h3>
         <div class="col-md-2 left-col text-center">
             <img class="profile-photo" 
-                 ng-src="{{user.photoURL}}" 
+                 ng-src="{{user.photoURL || defaultProfile}}" 
                  width="70px"
                  style="display: block;
                         margin-left: 25%"><br>

@@ -98,7 +98,16 @@ angular.module('bookme')
             });
         };
 
-        self.projects = {};
+        self.projects = {
+            'first_project': {
+                title: '',
+                desc: '',
+                url: '',
+                img1: '',
+                img2: '',
+                img3: ''
+            }
+        };
         self.selectedProject = null;
         
         var getProjects = function () {
