@@ -27,16 +27,14 @@ angular.module('bookme')
             $scope.projectInstance.selectedProject = key;    
         };
 
-        $scope.project_img = {
-            img_index: 0
-        };
+        $scope.projectInstance.img_index = 0;
 
         $scope.nextImg = function() {
-            $scope.project_img.img_index = ($scope.project_img.img_index + 1)%3;
+            $scope.projectInstance.img_index = ($scope.projectInstance.img_index + 1)%3;
         };
 
         $scope.prevImg = function() {
-            $scope.project_img.img_index = ($scope.project_img.img_index - 1)%3;
+            $scope.projectInstance.img_index = ($scope.projectInstance.img_index - 1)%3;
         };
 
         $scope.logout = function() {

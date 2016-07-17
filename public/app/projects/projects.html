@@ -27,21 +27,21 @@
         <div class="col-md-7">
             <div class="gallery">
                 <div class="row text-right" style="padding-right: 30px;">
-                    <a href="#" ng-click="prevImg()">
-                        <img src="img/projects/left-arrow.jpg" width="20px">
-                        </a>
-                    <a href="#" ng-click="nextImg()">
-                        <img src="img/projects/right-arrow.jpg" width="20px"> 
-                        </a>                   
+                    <img src="img/projects/left-arrow.jpg" width="20px" 
+                        style="cursor:pointer;"
+                        ng-click="prevImg()"> 
+                    <img src="img/projects/right-arrow.jpg" 
+                        style="cursor:pointer;"
+                        width="20px" ng-click="nextImg()"> 
                 </div>
                 <div class="row text-center">
-                    <img ng-if="project_img.img_index===0"
+                    <img ng-if="projectInstance.img_index===0"
                         ng-src="{{projectInstance.projects[projectInstance.selectedProject].img1}}" 
                         height="300px">  
-                    <img ng-if="project_img.img_index===1"
+                    <img ng-if="projectInstance.img_index===1"
                         ng-src="{{projectInstance.projects[projectInstance.selectedProject].img2}}" 
                         height="300px"> 
-                    <img ng-if="project_img.img_index===2"
+                    <img ng-if="projectInstance.img_index===2"
                         ng-src="{{projectInstance.projects[projectInstance.selectedProject].img3}}" 
                         height="300px"> 
                 </div>
