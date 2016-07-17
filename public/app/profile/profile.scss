@@ -25,5 +25,12 @@
         padding-top: 25px;
         padding-bottom: 25px;
         border: solid 3px #dadada;
+
+        .right-col {
+            .checkbox-inline, .radio-inline {
+                width: 120px;
+                font-weight: 500;
+            }
+        }
     }
 }

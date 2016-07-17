@@ -56,6 +56,7 @@ angular.module('bookme')
             projectData.title = project.title;
             projectData.desc = project.desc;
             projectData.url = project.url;
+            projectData.skills = project.skills;
             
             projectRef.child(key).set(projectData, function (error) {
                 if (error) {

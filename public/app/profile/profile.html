@@ -106,43 +106,86 @@
 
          <div class="col-md-9 right-col">
                 <div class="col-md-offset-1 col-md-10">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Project Name</label>
-                            <input type="text" class="form-control" id="title" ng-model="project.title">
-                        </div>
+                    
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" class="form-control" id="title" ng-model="project.title">
+                    </div>
+           
+                    <div class="form-group">
+                        <label>Project Description</label>
+                        <textarea class="form-control" rows="3" id="project_desc" ng-model="project.desc"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Project URL</label>
+                        <input type="text" class="form-control" id="title" ng-model="project.url">
                     </div>
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Project Description</label>
-                            <textarea class="form-control" rows="3" id="project_desc" ng-model="project.desc"></textarea>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Skills</label>
+                        </div>
+                        <div class="col=md-9" style="display: inline-block;">
+                            <div class="row">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.html"> HTML
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.jquery"> jQuery
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.sass"> Sass
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.css"> CSS
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.angular"> Angular
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.react"> React
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.javascript"> Javascript
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.node"> Node
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" 
+                                        ng-model="project.skills.bootstrap"> Bootstrap
+                                </label>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Project URL</label>
-                            <input type="text" class="form-control" id="title" ng-model="project.url">
-                        </div>
+                    
+                    <div class="form-group">
+                        <label>Image 1:</label>
+                        <input type="file" id="img1" file-model="project.img1">          
+                    </div>
+                   
+                    <div class="form-group">
+                        <label>Image 2:</label>
+                        <input type="file" id="img2" file-model="project.img2">
                     </div>
 
                     <div class="form-group">
-                    <label>Image 1:</label>
-                    
-                    <input type="file" id="img1" file-model="project.img1">
-                    
-                </div>
-                <div class="form-group">
-                    <label>Image 2:</label>
-                    <input type="file" id="img2" file-model="project.img2">
-                </div>
-                <div class="form-group">
-                    <label>Image 3:</label>
-                    
-                    <input type="file" id="img3" file-model="project.img3">
-                    
-                </div>
+                        <label>Image 3:</label>           
+                        <input type="file" id="img3" file-model="project.img3">                
+                    </div>
 
                 </div>
          </div>

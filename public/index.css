@@ -26,6 +26,9 @@
   padding-top: 25px;
   padding-bottom: 25px;
   border: solid 3px #dadada; }
+  .profile-page .project-info .right-col .checkbox-inline, .profile-page .project-info .right-col .radio-inline {
+    width: 120px;
+    font-weight: 500; }
 
 .project-page .project-header {
   margin-top: 20px;

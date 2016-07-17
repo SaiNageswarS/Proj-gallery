@@ -23,6 +23,7 @@ angular.module('bookme')
         },
 
         logout: function () {
+            
             return firebase.auth().signOut();
         }
     };
