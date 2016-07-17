@@ -38,41 +38,43 @@ angular.module('bookme')
         };
         
         self.saveProject = function (key, project, cb) {
-            var projectData = {};
-            projectData.title = project.title;
-            projectData.desc = project.desc;
-            projectData.url = project.url;
-            projectData.skills = project.skills;
             
-            projectRef.child(key).set(projectData, function (error) {
+            projectRef.child(key).set(project, function (error) {
                 if (error) {
                     alert("Failed to save. Check network connection.");
                 } else {
                     alert("Saved succesfully");                    
                     // initiate image upload
                     
-                    uploadImage(key + "/img1", project.img1, function(url) {
-                        if (url) {
-                            projectData.img1 = url;
-                            projectRef.child(key).set(projectData);
-                            console.log('File available at', url);
-                        }
-                    });
-                    
-                    uploadImage(key + "/img2", project.img2, function(url) {
-                        if (url) {
-                            projectData.img2 = url;
-                            projectRef.child(key).set(projectData);
-                            console.log('File available at', url);
-                        }
-                    });
-                    uploadImage(key + "/img3", project.img3, function(url) {
-                        if (url) {
-                            projectData.img3 = url;
-                            projectRef.child(key).set(projectData);
-                            console.log('File available at', url);
-                        }
-                    });
+                    if (project.img1 && typeof project.img1 === "object") {
+                        uploadImage(key + "/img1", project.img1, function(url) {
+                            if (url) {
+                                project.img1 = url;
+                                projectRef.child(key).set(project);
+                                console.log('File available at', url);
+                            }
+                        });
+                    }
+
+                    if (project.img2 && typeof project.img2 === "object") {
+                        uploadImage(key + "/img2", project.img2, function(url) {
+                            if (url) {
+                                project.img2 = url;
+                                projectRef.child(key).set(project);
+                                console.log('File available at', url);
+                            }
+                        });
+                    }
+
+                    if (project.img3 &&  typeof project.img3 === "object") {
+                        uploadImage(key + "/img3", project.img3, function(url) {
+                            if (url) {
+                                project.img3 = url;
+                                projectRef.child(key).set(project);
+                                console.log('File available at', url);
+                            }
+                        });
+                    }
                 }
             });
         };
