@@ -42,6 +42,11 @@
     .project-page .project-header .name-header h4 {
       display: inline-block; }
 
+.project-page .project-body .gallery {
+  padding: 5px 20px 5px 20px;
+  border: 1px solid;
+  margin: 15px; }
+
 .project-page .project-body .project-detail {
   padding: 0; }
   .project-page .project-body .project-detail h4 {
