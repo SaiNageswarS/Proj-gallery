@@ -1,11 +1,11 @@
 <div class="container project-page">
     <div class="row project-header">
          <div class="col-md-1">
-             <img ng-src="{{user.photoURL || defaultProfile}}" class="profile-pic">
+             <img ng-src="{{profileInstance.user.photoURL || defaultProfile}}" class="profile-pic">
          </div>
          <div class="col-md-5 text-uppercase name-header">
              <div style="display: table-row">
-                <h4>{{user.firstName + ' ' + user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
+                <h4>{{profileInstance.user.firstName + ' ' + profileInstance.user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
              </div>
              <div style="display: table-row" class="text-center">
                 <a ng-href="{{user.linkedin}}">
@@ -18,35 +18,35 @@
          </div>
          <div class="col-md-5 text-right" style="margin-top: 30px;">
              <a href="#" ng-click="logout()">Logout</a>
-             <h3 style="margin-top: 0"><small>{{user.title}} | {{user.company}}</small></h3>
+             <h3 style="margin-top: 0"><small>{{profileInstance.user.title}} | {{profileInstance.user.company}}</small></h3>
          </div>
     </div>
     <ig-tats-hr></ig-tats-hr>
 
     <div class="row project-body">
-        <div class="col-md-5 text-center" style="padding: 20px">
-            <img ng-src="{{profileInstance.projects[profileInstance.selectedProject].img1}}" height="300px">
+        <div class="col-md-7 text-center" style="padding: 20px">
+            <img ng-src="{{projectInstance.projects[projectInstance.selectedProject].img1}}" height="300px">
         </div>
-        <div class="col-md-6 project-detail">
-            <h4>{{profileInstance.projects[profileInstance.selectedProject].title}}</h4>
+        <div class="col-md-5 project-detail">
+            <h4>{{projectInstance.projects[projectInstance.selectedProject].title}}</h4>
             <ig-tats-hr></ig-tats-hr>
             
             <div class="skills">
                 <b>Skills : </b>
                      <span style="text-transform: capitalize;"
-                        ng-repeat="(skill, bool) in profileInstance.projects[profileInstance.selectedProject].skills">
+                        ng-repeat="(skill, bool) in projectInstance.projects[projectInstance.selectedProject].skills">
                          {{skill}}
                      </span>
                  <br>
                 <b>Project URL : </b> 
-                    <a ng-href="{{profileInstance.projects[profileInstance.selectedProject].url}}">
-                        {{profileInstance.projects[profileInstance.selectedProject].url}}
+                    <a ng-href="{{projectInstance.projects[projectInstance.selectedProject].url}}">
+                        {{projectInstance.projects[projectInstance.selectedProject].url}}
                     </a>
             </div>
 
             <ig-tats-hr></ig-tats-hr>
             <div class="proj-desc">
-                {{profileInstance.projects[profileInstance.selectedProject].desc}}
+                {{projectInstance.projects[projectInstance.selectedProject].desc}}
             </div>
         </div>
     </div>
@@ -58,8 +58,8 @@
                 <hr style="border-top: 3px solid #eee">
                 </div>
         </div>
-        <div class="row">
-            <div ng-repeat="(key, project) in profileInstance.projects"
+        <div class="row" style="margin-top: 5px;">
+            <div ng-repeat="(key, project) in projectInstance.projects"
                  class="col-md-2 text-center" style="min-height: 200px; min-width: 250px;">
                     <a href="#" ng-click="setSelected(key)">
                         <img ng-src="{{project.img1}}" height="200px">
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="row">
-            <div ng-repeat="(key, project) in profileInstance.projects"
+            <div ng-repeat="(key, project) in projectInstance.projects"
                  class="col-md-2 text-center" style="min-width: 250px;">
                     <a href="#" ng-click="setSelected(key)">
                         {{project.title}}

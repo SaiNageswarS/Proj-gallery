@@ -3,7 +3,7 @@
         <h3>BASIC INFORMATION</h3>
         <div class="col-md-2 left-col text-center">
             <img class="profile-photo" 
-                 ng-src="{{user.photoURL || defaultProfile}}" 
+                 ng-src="{{profileInstance.user.photoURL || defaultProfile}}" 
                  width="70px"
                  style="display: block;
                         margin-left: 25%"><br>
@@ -18,41 +18,41 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>FirstName:</label>
-                            <input type="text" class="form-control" id="firstName" ng-model="user.firstName">
+                            <input type="text" class="form-control" id="firstName" ng-model="profileInstance.user.firstName">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>LastName:</label>
-                            <input type="text" class="form-control" id="lastName" ng-model="user.lastName">
+                            <input type="text" class="form-control" id="lastName" ng-model="profileInstance.user.lastName">
                         </div>
                     </div>
                     
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Title:</label>
-                            <input type="text" class="form-control" id="title" ng-model="user.title">
+                            <input type="text" class="form-control" id="title" ng-model="profileInstance.user.title">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Company:</label>
-                            <input type="text" class="form-control" id="title" ng-model="user.company">
+                            <input type="text" class="form-control" id="title" ng-model="profileInstance.user.company">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Location:</label>
-                            <input type="text" class="form-control" id="title" ng-model="user.country">
+                            <input type="text" class="form-control" id="title" ng-model="profileInstance.user.country">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Website URL:</label>
-                            <input type="text" class="form-control" id="title" ng-model="user.url">
+                            <input type="text" class="form-control" id="title" ng-model="profileInstance.user.url">
                         </div>
                     </div>
             </div>
@@ -70,7 +70,7 @@
                              
                          </div>
                          <div class="col-md-10">
-                             <input type="text" class="form-control" ng-model="user.linkedin">
+                             <input type="text" class="form-control" ng-model="profileInstance.user.linkedin">
                          </div>
                      </div>
                     
@@ -82,7 +82,7 @@
                              
                          </div>
                          <div class="col-md-10">
-                             <input type="text" class="form-control" ng-model="user.github">
+                             <input type="text" class="form-control" ng-model="profileInstance.user.github">
                          </div>
                      </div>
 
@@ -92,7 +92,7 @@
         </div>
     </div>
     
-    <div class="row project-info" ng-repeat="(key, project) in profileInstance.projects">
+    <div class="row project-info" ng-repeat="(key, project) in projectInstance.projects">
         <div class="col-md-2 left-col text-center">
             <button class="btn btn-success" ng-click="saveProject(key)">
                         Save</button>

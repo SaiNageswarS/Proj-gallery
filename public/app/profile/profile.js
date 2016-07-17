@@ -9,7 +9,7 @@ angular.module('bookme')
   });
 }])
 
-.controller('profileCtrl', function($scope, $location, ProfileService) { 
+.controller('profileCtrl', function($scope, $location, ProfileService, ProjectService) { 
     var currentUser = firebase.auth().currentUser;
     $scope.defaultProfile = '/img/blank-profile.jpg';
     
@@ -21,35 +21,25 @@ angular.module('bookme')
         };  
 
         $scope.profileInstance = ProfileService.getInstance(refreshUI);
-        $scope.user = {
-            photoURL: currentUser.photoURL,
-            firstName: currentUser.displayName
-        };
-        
-        $scope.profileInstance.getProfile(function (snapshot) {
-            $scope.user = snapshot.val();
-            try {$scope.$apply(); } catch(err) {}  
-        }, function (err) {
-            alert("Failed to retrieve data. Check your connectivity");
-        });
+        $scope.projectInstance = ProjectService.getInstance(refreshUI);
         
         $scope.saveProfile = function () {
-            $scope.profileInstance.saveProfile($scope.user);
+            $scope.profileInstance.saveProfile();
         };
         
         $scope.addProject = function () {
-            $scope.profileInstance.addProject();
+            $scope.projectInstance.addProject();
         };
         
         $scope.saveProject = function(key) {
-            $scope.profileInstance.saveProject(key, $scope.profileInstance.projects[key], 
+            $scope.projectInstance.saveProject(key, $scope.projectInstance.projects[key], 
                 function() {
                     console.log("done");
                 });
         }
         
         $scope.deleteProject = function(key) {
-            $scope.profileInstance.deleteProject(key);
+            $scope.projectInstance.deleteProject(key);
         }
     } 
 });

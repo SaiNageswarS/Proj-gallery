@@ -9,7 +9,8 @@ angular.module('bookme')
   });
 }])
 
-.controller('projectsCtrl', function($scope, $location, ProfileService, UserService) { 
+.controller('projectsCtrl', function($scope, $location, ProfileService, 
+                                UserService, ProjectService) { 
     var currentUser = firebase.auth().currentUser;
     $scope.defaultProfile = '/img/blank-profile.jpg';
     
@@ -20,24 +21,15 @@ angular.module('bookme')
             try { $scope.$apply() } catch(err) {}
         };  
         $scope.profileInstance = ProfileService.getInstance(refreshUI);
-        $scope.user = {
-            photoURL: currentUser.photoURL,
-            firstName: currentUser.displayName
-        };
-        
-        $scope.profileInstance.getProfile(function (snapshot) {
-            $scope.user = snapshot.val();
-            try {$scope.$apply(); } catch(err) {}  
-        }, function (err) {
-            alert("Failed to retrieve data. Check your connectivity");
-        });
+        $scope.projectInstance = ProjectService.getInstance(refreshUI);
         
         $scope.setSelected = function(key) {
-            $scope.profileInstance.selectedProject = key;    
+            $scope.projectInstance.selectedProject = key;    
         };
 
         $scope.logout = function() {
             ProfileService.destroyInstance();
+            ProjectService.destroyInstance();
             UserService.logout().then(function() {
                 $location.path("/login");
             });
