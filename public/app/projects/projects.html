@@ -21,12 +21,12 @@
              <h3 style="margin-top: 0"><small>{{profileInstance.user.title}} | {{profileInstance.user.company}}</small></h3>
          </div>
     </div>
-    <ig-tats-hr></ig-tats-hr>
+    <ig-tats-hr style="display: inline-block; width: 101%"></ig-tats-hr>
 
     <div class="row project-body">
-        <div class="col-md-7">
+        <div class="col-md-7" style="padding-left: 0">
             <div class="gallery">
-                <div class="row text-right" style="padding-right: 30px;">
+                <div class="row text-right gallery-controls">
                     <img src="img/projects/left-arrow.jpg" width="20px" 
                         style="cursor:pointer;"
                         ng-click="prevImg()"> 
@@ -34,16 +34,13 @@
                         style="cursor:pointer;"
                         width="20px" ng-click="nextImg()"> 
                 </div>
-                <div class="row text-center">
-                    <img ng-if="projectInstance.img_index===0"
-                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img1}}" 
-                        height="300px">  
-                    <img ng-if="projectInstance.img_index===1"
-                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img2}}" 
-                        height="300px"> 
-                    <img ng-if="projectInstance.img_index===2"
-                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img3}}" 
-                        height="300px"> 
+                <div class="row">
+                    <img ng-if="projectInstance.img_index===0" class="gallery-img"
+                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img1}}">  
+                    <img ng-if="projectInstance.img_index===1" class="gallery-img"
+                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img2}}"> 
+                    <img ng-if="projectInstance.img_index===2" class="gallery-img"
+                        ng-src="{{projectInstance.projects[projectInstance.selectedProject].img3}}"> 
                 </div>
             </div>
         </div>
@@ -74,7 +71,7 @@
     <div class="row other-projects">
         <div style="display: table-row">
             <div class="other-prj-title text-center">Projects</div>
-            <div style="display: table-cell; width: 90%">
+            <div style="display: table-cell; width: 100%">
                 <hr style="border-top: 3px solid #eee">
                 </div>
         </div>

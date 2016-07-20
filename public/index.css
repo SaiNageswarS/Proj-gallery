@@ -43,9 +43,17 @@
       display: inline-block; }
 
 .project-page .project-body .gallery {
-  padding: 5px 20px 5px 20px;
-  border: 1px solid;
-  margin: 15px; }
+  padding: 5px 20px 5px 15px;
+  margin: 15px 15px 15px 0;
+  height: 350px;
+  position: relative; }
+  .project-page .project-body .gallery .gallery-controls {
+    position: absolute;
+    right: 35px;
+    top: 15px; }
+  .project-page .project-body .gallery .gallery-img {
+    height: 350px;
+    max-width: 100%; }
 
 .project-page .project-body .project-detail {
   padding: 0; }
@@ -62,7 +70,7 @@
 
 .project-page .other-projects .other-prj-title {
   background-color: #FFBE00;
-  width: 90px;
+  min-width: 90px;
   height: 30px;
   vertical-align: middle;
   display: table-cell;
@@ -74,10 +82,15 @@
     display: table-cell;
     width: 80px; }
 
-.ig-tats-hr .start-hr {
-  background-color: #EFB70A;
-  height: 3px; }
-
-.ig-tats-hr .end-hr {
-  background-color: #dadada;
-  height: 2px; }
+.ig-tats-hr {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 0 -15px; }
+  .ig-tats-hr .start-hr {
+    background-color: #EFB70A;
+    height: 3px;
+    padding: 0; }
+  .ig-tats-hr .end-hr {
+    background-color: #dadada;
+    height: 2px;
+    padding: 0; }

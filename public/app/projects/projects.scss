@@ -19,9 +19,22 @@
 
     .project-body {
         .gallery {
-            padding: 5px 20px 5px 20px;
-            border: 1px solid;
-            margin: 15px;
+            padding: 5px 20px 5px 15px;
+            //border: 1px solid;
+            margin: 15px 15px 15px 0;
+            height: 350px;
+            position: relative;
+
+            .gallery-controls {
+                position: absolute;
+                right: 35px;
+                top: 15px;
+            }
+
+            .gallery-img {
+                height: 350px;
+                max-width: 100%;
+            }
         }
         .project-detail {
             padding: 0;
@@ -47,7 +60,7 @@
     .other-projects {
         .other-prj-title {
             background-color: #FFBE00;
-            width: 90px;
+            min-width: 90px;
             height: 30px;
             vertical-align: middle;
             display: table-cell;
