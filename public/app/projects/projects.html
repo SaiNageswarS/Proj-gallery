@@ -8,11 +8,14 @@
                 <h4>{{profileInstance.user.firstName + ' ' + profileInstance.user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
              </div>
              <div style="display: table-row" class="text-center">
-                <a ng-href="{{user.linkedin}}">
+                <a ng-href="{{profileInstance.user.linkedin}}">
                     <img src="img/logos/linkedin.png" width="30px">   
                 </a>    
-                <a ng-href="{{user.github}}">          
+                <a ng-href="{{profileInstance.user.github}}">          
                     <img src="img/logos/github.png" width="30px">
+                </a>
+                <a ng-href="{{profileInstance.user.twitter}}">          
+                    <img src="img/logos/twitter.png" width="35px">
                 </a>
              </div>
          </div>
