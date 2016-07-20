@@ -22,8 +22,19 @@ angular.module('bookme')
             return deferred.promise;
         },
 
+        login_email: function (email, password) {
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                alert(error.message);
+            });
+        },
+
+        register: function (email, password) {
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                alert(error.message);
+            });
+        },
+
         logout: function () {
-            
             return firebase.auth().signOut();
         }
     };

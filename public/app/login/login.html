@@ -1,21 +1,80 @@
-<div class="container">
+<div class="container login-page">
     <div class="text-center">
         <div class="logo">Login</div>
-        
+
         <div class="row">
-            <button class="btn btn-default login-btn">
-                <img src="img/login/fb_login.jpg" width="100%" />
-            </button>
+            <form class="form-signin" ng-submit="email_login(email, password)">
+                
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" 
+                    placeholder="Email address" required="" autofocus=""
+                    ng-model="email">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" 
+                    placeholder="Password" required=""
+                    ng-model="password">
+                
+                <button class="btn btn-lg btn-primary btn-block" 
+                style="margin-top: 20px"
+                type="submit">Sign in</button>
+                <div>
+                    <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                    <button id="login_register_btn" 
+                        type="button" class="btn btn-link"
+                        data-toggle="modal" data-target="#myModal">
+                        Register</button>
+                </div>
+            </form>
         </div>
+        
         <div class="row">
             <button class="btn btn-default login-btn" ng-click="google_login()">
                 <img src="img/login/google_login.jpg" width="100%" />
             </button>
         </div>
-        <div class="row">
-            <button class="btn btn-default login-btn">
-                <img src="img/login/linkedin_login.jpg" width="100%" />
-            </button>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Register</h4>
+                </div>
+                
+                <form role="form">
+                    <div class="modal-body text-left">
+                       <div class="form-group">
+                            <label for="email">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" ng-model="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" ng-model="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" ng-model="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" ng-model="password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-default" 
+                            data-dismiss="modal"
+                            ng-click="register(firstName, lastName, email, password)">Submit</button>                        
+                    </div>
+
+                </form>
+                
+                </div>
+
+            </div>
         </div>
+        
     </div>
 </div>

@@ -12,7 +12,7 @@ angular.module('bookme')
 .controller('loginCtrl', function($scope, UserService, $location) { 
     firebase.auth().onAuthStateChanged(function(currentUser) {
         if (currentUser) {
-            $location.path("/projects");
+            $location.path(targetPath);
             $scope.$apply();
         }
     });
@@ -22,5 +22,16 @@ angular.module('bookme')
             .then(function (user) {
                 $location.path("/projects")
             });
+    };
+
+    var targetPath = "/projects";
+
+    $scope.email_login = function(email, password) {
+        UserService.login_email(email, password);
+    };
+
+    $scope.register = function(firstName, lastName, email, password) {
+        targetPath = "/profile";
+        UserService.register(email, password);
     };
 });

@@ -31,7 +31,7 @@ angular.module('bookme')
         self.getProfile = function () {
             profileRef.once("value", function (snapshot) {
                 self.user = snapshot.val();
-                self.refreshUI();  
+                if (self.refreshUI) self.refreshUI();  
             }, function (err) {
                 alert("Failed to retrieve data. Check your connectivity");
             });
