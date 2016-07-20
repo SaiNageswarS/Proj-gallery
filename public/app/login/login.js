@@ -25,13 +25,13 @@ angular.module('bookme')
     };
 
     var targetPath = "/projects";
-
+    
     $scope.email_login = function(email, password) {
         UserService.login_email(email, password);
     };
 
     $scope.register = function(firstName, lastName, email, password) {
-        targetPath = "/profile";
+        targetPath = "/profile/" + firstName + "/" + lastName;
         UserService.register(email, password);
     };
 });

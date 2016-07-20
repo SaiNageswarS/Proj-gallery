@@ -5,7 +5,7 @@
          </div>
          <div class="col-md-5 text-uppercase name-header">
              <div style="display: table-row">
-                <h4>{{profileInstance.user.firstName + ' ' + profileInstance.user.lastName}}</h4> | <small><a href="/#!/profile">Edit</a></small>
+                <h4>{{profileInstance.user.firstName + ' ' + profileInstance.user.lastName}}</h4> | <small><a href="/#!/profile/-1/-1">Edit</a></small>
              </div>
              <div style="display: table-row" class="text-center">
                 <a ng-href="{{profileInstance.user.linkedin}}">
@@ -30,12 +30,16 @@
         <div class="col-md-7" style="padding-left: 0">
             <div class="gallery">
                 <div class="row text-right gallery-controls">
-                    <img src="img/projects/left-arrow.jpg" width="20px" 
+                    <span style="background: rgba(255,255,255,0.5); padding: 4px;">
+                        <img src="img/projects/left-arrow.jpg" width="20px" 
                         style="cursor:pointer;"
                         ng-click="prevImg()"> 
-                    <img src="img/projects/right-arrow.jpg" 
+                    </span>
+                    <span style="background: rgba(255,255,255,0.5); padding: 4px;">
+                        <img src="img/projects/right-arrow.png" 
                         style="cursor:pointer;"
                         width="20px" ng-click="nextImg()"> 
+                    </span>
                 </div>
                 <div class="row">
                     <img ng-if="projectInstance.img_index===0" class="gallery-img"

@@ -3,13 +3,14 @@
 angular.module('bookme')
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/profile', {
+  $routeProvider.when('/profile/:firstName/:lastName', {
     templateUrl: 'app/profile/profile.html',
     controller: 'profileCtrl'
   });
 }])
 
-.controller('profileCtrl', function($scope, $location, ProfileService, ProjectService) { 
+.controller('profileCtrl', function($scope, $location, $routeParams,
+         ProfileService, ProjectService) { 
     var currentUser = firebase.auth().currentUser;
     $scope.defaultProfile = '/img/blank-profile.jpg';
     
@@ -22,6 +23,13 @@ angular.module('bookme')
 
         $scope.profileInstance = ProfileService.getInstance(refreshUI);
         $scope.projectInstance = ProjectService.getInstance(refreshUI);
+
+        if ($routeParams.firstName && $routeParams.firstName !== '-1') {
+            $scope.profileInstance.user.firstName = $routeParams.firstName;            
+        }
+        if ($routeParams.lastName  && $routeParams.lastName !== '-1') {
+            $scope.profileInstance.user.lastName = $routeParams.lastName;                    
+        }
         
         $scope.saveProfile = function () {
             $scope.profileInstance.saveProfile();
