@@ -1,5 +1,5 @@
 angular.module('bookme')
-.factory('ProjectService', function($q) {
+.factory('ProjectService', function(UtilService, $q) {
     function getFirstKey(obj) {
         for (var a in obj) return a;
         return null;
@@ -21,22 +21,6 @@ angular.module('bookme')
             });
         };
         
-        var uploadImage = function (path, img, cb) {
-            if (img && img.name) {
-                var imgUploadTask = storageRef.child(path).put(img, {});
-                    
-                imgUploadTask.on('state_changed', null, function(error) {
-                    alert("Failed to save. Check network connection.");
-                }, function() {
-                    var url = imgUploadTask.snapshot.metadata.downloadURLs[0];
-                    cb(url);
-                });   
-            }
-            else {
-                cb(null);
-            }
-        };
-        
         self.saveProject = function (key, project, cb) {
             
             projectRef.child(key).set(project, function (error) {
@@ -47,7 +31,7 @@ angular.module('bookme')
                     // initiate image upload
                     
                     if (project.img1 && typeof project.img1 === "object") {
-                        uploadImage(key + "/img1", project.img1, function(url) {
+                        UtilService.uploadImage(userId, key + "/img1", project.img1, function(url) {
                             if (url) {
                                 project.img1 = url;
                                 projectRef.child(key).set(project);
@@ -57,7 +41,7 @@ angular.module('bookme')
                     }
 
                     if (project.img2 && typeof project.img2 === "object") {
-                        uploadImage(key + "/img2", project.img2, function(url) {
+                        UtilService.uploadImage(userId, key + "/img2", project.img2, function(url) {
                             if (url) {
                                 project.img2 = url;
                                 projectRef.child(key).set(project);
@@ -67,7 +51,7 @@ angular.module('bookme')
                     }
 
                     if (project.img3 &&  typeof project.img3 === "object") {
-                        uploadImage(key + "/img3", project.img3, function(url) {
+                        UtilService.uploadImage(userId, key + "/img3", project.img3, function(url) {
                             if (url) {
                                 project.img3 = url;
                                 projectRef.child(key).set(project);

@@ -7,7 +7,10 @@
                  width="70px"
                  style="display: block;
                         margin-left: 25%"><br>
-            <a href="#"><img src="img/upload.jpg"> Upload </a>
+            <label style="cursor: pointer; color: blue;">
+                <img src="img/upload.jpg"> Upload 
+                <input type="file" style="display: none;" file-model="profileInstance.user.photo">
+            </label>
             <br><br><br>
             <button class="btn btn-success btn-lg" ng-click="saveProfile()">
                         Save</button>

@@ -1,5 +1,5 @@
 angular.module('bookme')
-.factory('ProfileService', function($q) {
+.factory('ProfileService', function($q, UtilService) {
     function getFirstKey(obj) {
         for (var a in obj) return a;
         return null;
@@ -23,7 +23,21 @@ angular.module('bookme')
                 if (error) {
                     alert("Failed to save. Check network connection.");
                 } else {
-                    alert("Saved succesfully");
+
+                    if (self.user.photo && typeof self.user.photo === "object") {
+                        UtilService.uploadImage(userId, "/profile", self.user.photo, function(url) {
+                            if (url) {
+                                self.user.photoURL = url;
+                                profileRef.set(self.user);
+                                console.log('File available at', url);
+                                alert("Saved succesfully");
+                                if (self.refreshUI) self.refreshUI();
+                            }
+                        });
+                    }
+                    else {
+                        alert("Saved succesfully");
+                    }
                 }
             });
         };
